@@ -1,0 +1,74 @@
+spserver:
+  port: ${PORT:8085}
+  servlet:
+    session:
+      timeout: 15m
+spring:
+  rabbitmq:
+    host: 192.168.1.52
+    username: abc
+    password: abc
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  datasource:
+
+    performances:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://192.168.1.52:3306/hiro_performance?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true
+      username: root
+      password: Abc123@#
+
+    systems:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://192.168.1.52:3306/hiro_system?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true
+      username: root
+      password: Abc123@#
+  jpa:
+    show-sql: false
+    hibernate:
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      ddl-auto: none
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        session.events.log.LOG_QUERIES_SLOWER_THAN_MS: 300
+        use-new-id-generator-mappings: false
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    generate-ddl: false
+
+  redis:
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 2
+    port: 6379
+    host: 192.168.1.74
+    password: P@zzw0rd
+
+  session:
+    jdbc:
+      initialize-schema: always
+jira-sync:
+  queues: jira.project, jira.issue, jira.member
+  url: https://j2.ossigroup.net/
+  username: abc
+  password: xxx
+
+org:
+  hibernate:
+    SQL_SLOW: info
+
+jwt:
+  header: Authorization
+  secret-key: c2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+  token:
+    expired-time-ms: 86400
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        type: trace
+
