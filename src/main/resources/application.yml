@@ -1,13 +1,13 @@
 spserver:
-  port: ${PORT:8085}
+  port: ${PORT:8089}
   servlet:
     session:
       timeout: 15m
 spring:
   rabbitmq:
     host: 192.168.1.52
-    username: abc
-    password: abc
+    username: chilk
+    password: chilk
   servlet:
     multipart:
       max-file-size: -1
@@ -54,8 +54,8 @@ spring:
 jira-sync:
   queues: jira.project, jira.issue, jira.member
   url: https://j2.ossigroup.net/
-  username: abc
-  password: xxx
+  username: jirasync
+  password: 1e3q2wadS
 
 org:
   hibernate:

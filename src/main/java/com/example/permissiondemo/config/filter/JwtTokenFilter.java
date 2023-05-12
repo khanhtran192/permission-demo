@@ -3,10 +3,6 @@ package com.example.permissiondemo.config.filter;
 
 import com.example.permissiondemo.redis.Permission;
 import com.example.permissiondemo.redis.service.CacheService;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -17,6 +13,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -54,10 +54,10 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                  * **/
                 role = "PM";
                 cacheService.createPermissionCache(Permission.builder()
-                                .token(token)
-                                .role(role)
-                                .id(id)
-                                .build());
+                        .token(token)
+                        .role(role)
+                        .id(id)
+                        .build());
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                         null, null, permission.get().getAuthorities()
                 );
